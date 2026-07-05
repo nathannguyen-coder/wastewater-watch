@@ -33,6 +33,10 @@ function statusLabel(status: Sample["status"]) {
   }[status]
 }
 
+function latestSample(samples: Sample[]) {
+  return samples[samples.length - 1]
+}
+
 function StatusDot({ status }: { status: Sample["status"] | Site["latest_status"] }) {
   return <span className={`status-dot status-${status}`} aria-hidden="true" />
 }
@@ -250,7 +254,7 @@ function App() {
       setTimeline(nextTimeline)
       setAlerts(nextAlerts)
       setSelectedSampleId(
-        nextAlerts[0]?.sample_id ?? nextTimeline.samples.at(-1)?.id ?? "",
+        nextAlerts[0]?.sample_id ?? latestSample(nextTimeline.samples)?.id ?? "",
       )
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unknown error")
@@ -276,7 +280,9 @@ function App() {
       ])
       setTimeline(nextTimeline)
       setAlerts(nextAlerts)
-      setSelectedSampleId(nextAlerts[0]?.sample_id ?? nextTimeline.samples.at(-1)?.id ?? "")
+      setSelectedSampleId(
+        nextAlerts[0]?.sample_id ?? latestSample(nextTimeline.samples)?.id ?? "",
+      )
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unknown error")
     }
@@ -284,7 +290,7 @@ function App() {
 
   const selectedSample = useMemo(
     () => timeline?.samples.find((sample) => sample.id === selectedSampleId)
-      ?? timeline?.samples.at(-1),
+      ?? (timeline ? latestSample(timeline.samples) : undefined),
     [selectedSampleId, timeline],
   )
   const selectedAlert = alerts.find((alert) => alert.sample_id === selectedSample?.id)
