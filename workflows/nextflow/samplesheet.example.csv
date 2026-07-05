@@ -1,0 +1,2 @@
+sample_id,site_id,collected_at,read_1,read_2
+EXAMPLE-001,example-site,2026-01-01,/replace/with/sample_R1.fastq.gz,/replace/with/sample_R2.fastq.gz
