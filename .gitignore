@@ -10,6 +10,7 @@ __pycache__/
 *.egg-info/
 apps/web/node_modules/
 apps/web/dist/
+apps/web/public/data/dashboard.json
 apps/web/playwright-report/
 test-results/
 .nextflow/

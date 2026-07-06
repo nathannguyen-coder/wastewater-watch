@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test"
 
 test("analyst can review a real SRA signal and inspect a clear site", async ({ page }) => {
-  await page.goto("/")
+  await page.goto("./")
 
   await expect(page.getByRole("heading", { name: "Point Loma WTP", level: 1 })).toBeVisible()
   await expect(page.getByRole("link", { name: "W Wastewater Watch" })).toBeVisible()
@@ -24,7 +24,7 @@ test("analyst can review a real SRA signal and inspect a clear site", async ({ p
 
 test("mobile layout keeps every site and the selected sample accessible", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto("/")
+  await page.goto("./")
 
   await expect(page.getByRole("button", { name: /Point Loma WTP/ })).toBeVisible()
   await expect(page.getByRole("button", { name: /South Bay WRP/ })).toBeVisible()
