@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+**/__pycache__
+**/*.pyc
+**/node_modules
+**/dist
+**/test-results
+**/playwright-report
+.nextflow
+work
+results
