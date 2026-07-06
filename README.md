@@ -10,6 +10,8 @@ These unenriched wastewater metatranscriptomes were collected at three Southern
 California treatment plants. They are historical research data, not current
 surveillance or evidence of an outbreak.
 
+**[Open the live dashboard](https://nathannguyen-coder.github.io/wastewater-watch/)**
+
 ## What this demonstrates
 
 - Reproducible metagenomics workflow design with Nextflow and containers
@@ -63,6 +65,11 @@ npm run dev
 
 Open `http://127.0.0.1:5173`. The dashboard opens on Point Loma WTP. Every sample
 links back to its NCBI SRA run and includes its BioSample and profiler version.
+
+The public GitHub Pages deployment is a generated snapshot of the same API
+responses so the portfolio remains available without a continuously running
+server. The FastAPI application remains the source of truth for local and
+containerized use.
 
 ## Rebuild the NCBI dataset
 
